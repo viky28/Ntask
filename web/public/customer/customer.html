@@ -1,0 +1,35 @@
+<div ui-view='header'></div>
+<div ng-controller="custCtrl" class="container">
+  <h2>{{userType | uppercase}}</h2>
+ <div>
+ 	<button class="btn" style="width: 10%;" ng-click="showForm = !showForm">toggle</button>
+ </div>
+  <div class="container" ng-show="showForm">
+		<label for="heading"><b>Header</b></label>
+		<input type="text" placeholder="Enter Heading" name="heading" ng-model="heading" required>
+
+		<label for="desc"><b>Desc</b></label>
+		<input type="text" placeholder="Enter Desc" ng-model="desc" name="desc" required>
+
+		<button type="button" ng-click="createComplaint()">Send</button>
+	</div>
+	<span ng-if="errorMsg">{{errorMsg}}</span>
+  <table class="table" ng-if="!errorMsg">
+    <thead>
+      <tr>
+        <th>Status</th>
+        <th>Create Date</th>
+        <th>Update Date</th>
+        <th>Heading</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr ng-repeat="data in tableData" ng-click="openForm(data,'rowClick')" style="cursor: pointer;">
+        <td>{{data.status}}</td>
+        <td>{{data.create_date | date:'medium'}}</td>
+        <td>{{data.update_date | date:'medium'}}</td>
+        <td>{{data.heading}}</td>
+      </tr>
+    </tbody>
+  </table>	
+</div>

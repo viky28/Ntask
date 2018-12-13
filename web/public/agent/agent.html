@@ -1,0 +1,78 @@
+<div ui-view='header'></div>
+<div ng-controller="agentCtrl">
+	<h2>{{userType | uppercase}}</h2>
+	<table class="table" ng-if="!errorMsg">
+		<thead>
+			<tr>
+				<th>Customer</th>
+				<th>Status</th>
+				<th>Create Date</th>
+				<th>Update Date</th>
+				<th>Heading</th>
+				<!-- <th>update Status</th> -->
+			</tr>
+		</thead>
+		<tbody>
+			<tr ng-repeat="data in tableData" ng-click="openModal(data,'rowClick')" style="cursor: pointer;">
+				<td>{{data.email}}</td>
+				<td>{{data.status}}</td>
+				<td>{{data.create_date | date:'medium'}}</td>
+				<td>{{data.update_date | date:'medium'}}</td>
+				<td>{{data.heading}}</td>
+				<!-- <td>
+					<div class="form-group">
+						<select class="form-control" id="sel1" ng-model="status">
+							<option></option>
+							<option>Approved</option>
+							<option>Declined</option>
+						</select>
+					</div>
+				</td> -->
+			</tr>
+		</tbody>
+	</table>
+	<div class="container">
+		<div class="modal" id="myModal">
+			<div class="modal-dialog modal-lg">
+				<div class="modal-content">
+
+					<!-- Modal Header -->
+					<div class="modal-header">
+						<h4 class="modal-title">Customer details</h4>
+						<button type="button" class="close" data-dismiss="modal">&times;</button>
+					</div>
+
+					<!-- Modal body -->
+					<div class="modal-body">
+						<ul class="list-group">
+						  <li class="list-group-item">Email <span class="badge">{{modalData.email}}</span></li>
+						  <li class="list-group-item">Status 
+						  	<span class="badge">
+						  		{{modalData.status}}
+						  	</span>
+						  	<div class="form-group">
+								<select class="form-control" id="sel1" ng-model="modalData.status">
+									<option>Approved</option>
+									<option>Declined</option>
+								</select>
+							</div>
+						  </li> 
+						  <li class="list-group-item">Create Date <span class="badge">{{modalData.create_date | date:'medium'}}</span></li>
+						  <li class="list-group-item">Update Date<span class="badge">{{modalData.update_date | date:'medium'}}</span></li> 
+						  <li class="list-group-item">Heading<span class="badge">{{modalData.heading}}</span></li>
+						  <li class="list-group-item">Desc<span class="badge">{{modalData.desc}}</span></li>
+						</ul>
+					</div>
+
+					<!-- Modal footer -->
+					<div class="modal-footer">
+						<button type="button" class="btn btn-danger" data-dismiss="modal" ng-click="updateStatus()">Update Status</button>
+						<button type="button" class="btn btn-danger" data-dismiss="modal">Close</button>
+					</div>
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+</div>
