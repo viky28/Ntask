@@ -1,4 +1,4 @@
-angular.module('ntask.login',[])
+angular.module('ntask.login',['ngMessages'])
 .controller('loginCtrl',['$scope','postService','$location', function($scope,postService,$location){
 	
 	

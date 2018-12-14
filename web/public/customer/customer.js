@@ -14,6 +14,7 @@ angular.module('ntask.customer',[])
 		console.log("success",data)
 		if(data.data.status==="error"){
 			$scope.errorMsg = "No Data Found !"
+			$scope.tableData = [];
 		} else {
 			$scope.tableData = data.data.result.complaintData;
 		}
@@ -66,6 +67,11 @@ angular.module('ntask.customer',[])
 			})
 		}
 		
+	}
+	$scope.ToggleForm  = function(){
+		$scope.showForm= !$scope.showForm;
+		$scope.heading = "";
+		$scope.desc = "";
 	}
 
 	$scope.openForm = function(data,flag){

@@ -5,6 +5,7 @@ var app = angular.module('ntask',
 		'ntask.login',
 		'ntask.agent',
 		'ntask.customer',
+		'ntask.test',
 		'common'
 	]);
 app.config(function($stateProvider,$urlRouterProvider){
@@ -51,6 +52,17 @@ app.config(function($stateProvider,$urlRouterProvider){
 			},
 			"header@customer":{
 				templateUrl:"header/header1.html"
+			}
+		}
+	})
+	.state('test', {
+		url: "/test",
+		views : {
+			"" : {
+				templateUrl:"test-dir/test.html"
+			},
+			"header@test":{
+				templateUrl:"header/header.html"
 			}
 		}
 	})

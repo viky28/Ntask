@@ -1,20 +1,42 @@
 <div ui-view='header'></div>
-<div ng-controller="registerCtrl">
+<div ng-controller="registerCtrl" class="container center_div">
 	<form name="userForm" ng-submit="userForm.$valid &&registerCustomer()" novalidate>
 		<div class="container">
-			<label for="email"><b>Email</b></label>
-			<input type="text" placeholder="Enter Email" name="email" ng-model="user.email" required>
-			
-			<label for="psw"><b>Password</b></label>
-			<input type="password" placeholder="Enter Password" ng-model="user.password" name="psw" required>
+			<div class="form-group">
+				<label for="email"><b>Email</b></label>
+				<input type="text" class="form-control lr" placeholder="Enter Email" name="email" ng-model="user.email" required ng-pattern="/^[a-z]+[a-z0-9._]+@[a-z]+\.[a-z.]{2,5}$/">
+				<div ng-if="submit || userForm.email.$dirty" 
+				    ng-messages="userForm.email.$error" style="color:red" role="alert">
+				    <div ng-message="required">You did not enter a field !</div>
+				    <div ng-message="pattern">Email is not valid !</div>
+				</div>
+			</div>
+			<div class="form-group">
+				<label for="psw"><b>Password</b></label>
+				<input type="password" class="form-control lr" placeholder="Enter Password" ng-model="user.password" name="psw" required>
+				<div ng-if="submit || userForm.psw.$dirty" 
+				    ng-messages="userForm.psw.$error" style="color:red" role="alert">
+				    <div ng-message="required">You did not enter a field !</div>
+				</div>
+			</div>
 
-			<label for="mobile"><b>Mobile</b></label>
-			<input type="text" placeholder="Enter Mobile No." ng-model="user.mobile" name="mobile" required ng-pattern="/^(?:[0-9]{1,3}\.){3}/">
-
-			<button type="submit" class="loginbtn">Register</button>
-			<label>
-				<a ng-href="/public/#!/login">Already register ? Please register.</a>
+			<div class="form-group">
+				<label for="mobile"><b>Mobile</b></label>
+				<input type="text" class="form-control lr" placeholder="Enter Mobile No." ng-model="user.mobile" name="mobile" required ng-pattern="/^[0-9]{10,10}$/">
+				<div ng-if="submit || userForm.mobile.$dirty" 
+				    ng-messages="userForm.mobile.$error" style="color:red" role="alert">
+				    <div ng-message="required">You did not enter a field !</div>
+				    <div ng-message="pattern">Mobile number invalid !</div>
+				</div>
+			</div>
+			<div style="text-align: center;">
+				<button type="submit" class="btn btn-warning" ng-click="submit=true">Register</button>
+			</div>
+			<div style="text-align: center;">
+				<label>
+				<a ng-href="/public/#!/login">Already register ? Please login here.</a>
 			</label>
+			</div>	
 		</div>
 	</form>
 </div>

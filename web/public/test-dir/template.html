@@ -1,0 +1,12 @@
+<table class="table table-striped" style="width:100%">
+	<h1>{{testDirective}}</h1>
+  <tr>
+    <th ng-repeat="item in data.headList">{{ item.name }}</th>
+  </tr>
+  <tr ng-repeat="item in data.rowList" ng-click="getRow(item)" style="cursor: pointer;">
+    <td>{{ item.username }}</td>
+    <td>{{ item.age }}</td> 
+    <td>{{ item.address }}</td>
+    <td>{{ item.email }}</td>
+  </tr>
+</table>
