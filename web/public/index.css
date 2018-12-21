@@ -24,7 +24,9 @@ form {
 .container {
   padding: 16px;
 }
-
+.compForm{
+  margin:1%;
+}
 
 /*input.ng-invalid {
     background-color: white;

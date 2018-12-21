@@ -12,7 +12,7 @@ angular.module('ntask.customer',[])
 	postService.getPromise(data)
 	.then(function(data,status,config,header){
 		console.log("success",data)
-		if(data.data.status==="error"){
+		if(data.data.status==="error" || data.data.result.complaintData.length==0){
 			$scope.errorMsg = "No Data Found !"
 			$scope.tableData = [];
 		} else {

@@ -1,5 +1,5 @@
 angular.module('ntask.login',['ngMessages'])
-.controller('loginCtrl',['$scope','postService','$location', function($scope,postService,$location){
+.controller('loginCtrl',['$scope','postService','$location','$timeout', function($scope,postService,$location,$timeout){
 	
 	
 	$scope.doLogin = function(){
@@ -10,17 +10,27 @@ angular.module('ntask.login',['ngMessages'])
 		postService.getPromise(data)
 		.then(function(data,status,config,header){
 			console.log("sucess",data)
-			$scope.user.userType = data.data.result.userType;
-			$scope.user = $scope.user;
-			localStorage.setItem('userData',JSON.stringify($scope.user));
-			if($scope.user.userType==="customer"){
-				$location.path('/customer')
-			} else if($scope.user.userType==="agent") {
-				$location.path('/agent')
-			}
-			
+			if(data.data.status==="error"){
+				$scope.errorMSG = "wrong Credentials !"
+				$timeout(function(){
+					$scope.errorMSG = "";
+				},2000)
+			} else {
+				$scope.user.userType = data.data.result.userType;
+				$scope.user = $scope.user;
+				localStorage.setItem('userData',JSON.stringify($scope.user));
+				if($scope.user.userType==="customer"){
+					$location.path('/customer')
+				} else if($scope.user.userType==="agent") {
+					$location.path('/agent')
+				}
+			}	
 		},function(data,status,config,header){
 			console.log("error",data)
+			$scope.errorMSG = "Sorry We Are Facing Some Server Issue !";
+			$timeout(function(){
+					$scope.errorMSG = "";
+				},2000)
 		})
 	}
 }])
