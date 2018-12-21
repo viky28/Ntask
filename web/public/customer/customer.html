@@ -2,7 +2,7 @@
 <div ng-controller="custCtrl" class="container">
   <h2>{{userType | uppercase}}</h2>
  <div>
- 	<button class="btn" style="width: 10%;" ng-click="ToggleForm()">Create</button>
+ 	<button class="btn btn-warning" style="width: 10%;" ng-click="ToggleForm()">Create</button>
  </div>
   <form name="complaintForm" ng-submit="complaintForm.$dirty && complaintForm.$valid && createComplaint()" ng-show="showForm" class="compForm">
     <div class="container" >
@@ -16,7 +16,7 @@
       </div>
 
       <div style="text-align: center;" class="form-group">
-        <button type="submit" class="btn btn-primary">Send</button>
+        <button type="submit" class="btn btn-warning">Send</button>
       </div>
     </div>
   </form>
