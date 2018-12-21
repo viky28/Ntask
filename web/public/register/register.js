@@ -1,5 +1,5 @@
 angular.module('ntask.register',[])
-.controller('registerCtrl',['$scope','postService','$location', function($scope,postService,$location){
+.controller('registerCtrl',['$scope','postService','$location','$timeout', function($scope,postService,$location,$timeout){
 	$scope.registerCustomer = function(){
 		console.log("user detail",$scope.user)
 		$scope.user.userType = "customer";
@@ -10,10 +10,22 @@ angular.module('ntask.register',[])
 		postService.getPromise(data)
 		.then(function(data,status,config,header){
 			console.log("success",data)
-			$scope.user = {};
-			$location.path('/')
+			if(data.data.status==="error"){
+				$scope.errorMsg = "Already Registered !"
+				$timeout(function(){
+					$scope.errorMsg = ""
+				},2000)
+			} else {
+				$scope.user = {};
+				$location.path('/')
+			}
+			
 		},function(data,status,header,config){
 			console.log("error",data)
+			$scope.errorMsg = "Sorry We Are Facing Some Server Issue !"
+				$timeout(function(){
+					$scope.errorMsg = ""
+				},2000)
 		})
 	}
 }])

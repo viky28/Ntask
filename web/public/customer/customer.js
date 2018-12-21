@@ -62,6 +62,7 @@ angular.module('ntask.customer',[])
 				$scope.showForm = false;
 				$scope.heading = "";
 				$scope.desc = "";
+				$scope.errorMsg = false;
 			},function(data,status,config,header){
 				console.log('error',data)
 			})
