@@ -1,6 +1,8 @@
 <div ui-view='header'></div>
 <div ng-controller="agentCtrl">
-	<h2>{{userType | uppercase}}</h2>
+	<div class="title">
+		<h4>{{userType | uppercase}}</h4>
+	</div>
 	<table class="table table-striped" ng-if="!errorMsg">
 		<thead>
 			<tr>

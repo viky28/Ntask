@@ -1,7 +1,9 @@
 <div ui-view='header'></div>
 <div ng-controller="custCtrl" class="container">
-  <h2>{{userType | uppercase}}</h2>
- <div>
+  <div class="title">
+    <h4>{{userType | uppercase}}</h4>
+  </div>
+ <div style="text-align: right;">
  	<button class="btn btn-warning" style="width: 10%;" ng-click="ToggleForm()">Create</button>
  </div>
   <form name="complaintForm" ng-submit="complaintForm.$dirty && complaintForm.$valid && createComplaint()" ng-show="showForm" class="compForm">

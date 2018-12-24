@@ -84,4 +84,8 @@ app.config(function($stateProvider,$urlRouterProvider){
 			$location.path('/agent')
 		}
 	}
+
+	// $(function () {
+	//   $('[data-toggle="tooltip"]').tooltip()
+	// })
 })

@@ -1,7 +1,7 @@
 /* Bordered form */
 form {
   border: 3px solid #f1f1f1;
-  background-color:#343a40!important;;
+  background-color:#343a40!important;
   color: white;
 }
 .center_div{
@@ -36,4 +36,12 @@ input.ng-valid {
 }*/
 .table {
   font-size: 12px;
+  margin-top: 1%;
+}
+.table th {
+  background-color: #343a40!important;
+  color: white; 
+}
+.title{
+  text-align: center;
 }
